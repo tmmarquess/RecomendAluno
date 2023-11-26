@@ -1,7 +1,7 @@
 import csv
 import random
 
-from users import users
+from old_users_dataset import users
 
 
 def arred(number):
