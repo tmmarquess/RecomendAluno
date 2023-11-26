@@ -15,4 +15,6 @@ def Recommend_app():
             for recommendation in recommendations:
                 st.write(f"{recommendation[0]} - Pontuação: {recommendation[1]}")
         else:
-            st.write("O usuário não foi encontrado. Por favor, insira um usuário válido.")
+            st.write(
+                "O usuário não foi encontrado. Por favor, insira um usuário válido."
+            )
