@@ -7,10 +7,10 @@ def Euclidian(rating1, rating2):
 
     for key in rating1:
         if key in rating2:
-            distance += sqrt(pow(rating1[key] - rating2[key], 2))
+            distance += pow(rating1[key] - rating2[key], 2)
             commonRatings = True
 
     if commonRatings:
-        return distance
+        return sqrt(distance)
     else:
         return 0
