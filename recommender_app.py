@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 from users import users, subjects
 from recommend import Recommend
@@ -33,7 +34,16 @@ def Recommend_app():
         if username in users:
             recommendations = Recommend(username, users)
             st.write(f"Recomendações para {username}:")
-            for recommendation in recommendations:
-                st.write(f"{recommendation[0]} - Pontuação: {recommendation[1]}")
+
+            recomend_dict = dict(subject=list(), score=list())
+            for recomendation in recommendations:
+                if recomendation[1] > 0:
+                    recomend_dict["subject"].append(recomendation[0])
+                    recomend_dict["score"].append(recomendation[1])
+
+            st.dataframe(
+                pd.DataFrame(recomend_dict),
+                column_config={"subject": "Matéria", "score": "Pontuação"},
+            )
         else:
             st.write("O usuário não foi encontrado. Você deseja inserí-lo no sistema?")
